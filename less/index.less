@@ -64,9 +64,31 @@ html, body {
 @darkGray:#595959;
 @background: #e5e5e5;
 .center {
-  padding:1%;
-  margin:1%;
-};
+  padding:2%;
+  margin:2%;
+}
+
+.my-hover-mixin() {
+  &:hover {
+    transform: translateY(-0.15em);
+       transition:ease-in-out 0.25s;
+       color: #fff;
+      -webkit-box-shadow: -2px 16px 11px -11px #696969;
+      -moz-box-shadow: -2px 16px 11px -11px #696969;
+       box-shadow: -2px 16px 11px -11px #696969;
+  }
+}
+.my-hover-mixin-small() {
+  &:hover {
+    transform: translateY(-0.15em);
+       transition:ease-in-out 0.25s;
+       color: #000;
+       font-weight: bold;
+      -webkit-box-shadow: -2px 16px 11px -11px #696969;
+      -moz-box-shadow: -2px 16px 11px -11px #696969;
+       box-shadow: -2px 16px 11px -11px #696969;
+  }
+}
 
 hr {
   width: 96%;
@@ -100,14 +122,20 @@ nav {
 .about {
   .center();
   .intro  {
+    @media (max-width: 515px) {
+        .code {
+          display: flex;
+          justify-content: center;
+        }
+      }
     display: flex;
     flex-direction: column;
     background:@background;
     img {
-      width: 33%;
+      width: 30%;
       height: auto;
-      padding-left: 2%;
-      padding-top:2%;
+      padding-left: 3%;
+      padding-top:3%;
       opacity: .8;
     }
 
@@ -115,28 +143,38 @@ nav {
       h1 {
           text-align: start;
           font-size: 3rem;
-          padding:1%;
+          padding:2%;
           font-family: 'Gupter', serif;
-          padding-left: 2%;
+          padding-left: 3%;
           opacity: 0.8;
         }
         p {
           padding:.5%;
           padding-left: 2%;
-          font-size: 1.1rem;
+          font-size: 1.3rem;
           line-height: 1.3rem;
         }
 
         button {
-          background-color:@darkGray;
-          width: 15%;
-          height: 2.5rem;
-          margin:1% 0% 5% 2%;
-          color: #fff;
-          font-size: 1.1rem;
-          @media (max-width: 962px) {
-            font-size: .8rem;
-          }
+              background-color:@darkGray;
+             .my-hover-mixin();
+             border-radius: 5px;
+              width: 15%;
+              height: 2.8rem;
+              margin:1% 0% 5% 2%;
+              color: #fff;
+                transition:ease-in-out 0.35s;
+              font-size: 1.1rem;
+                @media (max-width: 962px) {
+                  font-size: .8rem;
+                }
+              @media (max-width: 515px) {
+              font-size: .5rem;
+              color: red;
+              background-color:#fff;
+              margin: 5% 0% 5% 42%;
+              .my-hover-mixin-small();
+            }
         }
     }
   }
@@ -145,6 +183,10 @@ nav {
 
 // <----------------info section ----------------->
 .info-section {
+  @media (max-width: 800px) {
+    display: flex;
+    flex-direction: column;
+  }
   .center();
   display: flex;
   justify-content: center;
@@ -152,8 +194,18 @@ nav {
   .info-one, .info-two {
     width: 50%;
     height: 20rem;
+     @media (max-width: 800px) {
+      width: 100%;
+    }
   }
 
+  .info-one {
+    @media (max-width: 976px) {
+      p {
+        line-height: 1.1rem;
+      }
+    }
+  }
   .info-two-inner {
     display: flex;
     flex-direction: column;
@@ -169,6 +221,11 @@ nav {
   h2 {
     padding-left: 2%;
     font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .biger {
+    font-size: 2rem;
   }
 
   p {
@@ -186,10 +243,15 @@ nav {
     }
   h2 {
     font-size: 1.5rem;
+    font-weight: bold;
+
   }
   .work {
     height: 2rem;
     display: flex;
+      @media (max-width: 515px) {
+        height: 3rem;
+      }
   }
 
   .one {
@@ -202,6 +264,10 @@ nav {
 
   h3, h4 {
     width: 25%;
+    margin:.8% auto;
+    @media (max-width: 515px) {
+        width: 20%;
+      }
   }
 }
 
@@ -209,8 +275,8 @@ nav {
 // ------------------footer ----------------------------->
 
 footer {
-  padding:auto 2%;
-  margin: auto 2%;
+  padding:auto 3%;
+  margin: auto 3%;
   background-color:@darkGray;
   height: 5rem;
 }
@@ -218,4 +284,5 @@ footer {
   text-align: center;
   padding-top:2%;
   color:#fff;
+  text-shadow: .1px .1px #fff;
 }
